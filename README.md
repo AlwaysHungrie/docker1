@@ -16,6 +16,7 @@ If using AWS, edit inbound security group rule to include a new Custom TCP rule.
 `sudo docker run -d --mount 'type=volume,src=my-vol,dst=/usr/src/app' -p 5000:8080 dhairyashah98/web:l`
 
 **Usage**
+![image](https://user-images.githubusercontent.com/31621421/56863551-3df61a00-69d5-11e9-8cfc-e13ce20d880e.png)
 `localhost:5000`
 Enter first name and last name in text fields
 
