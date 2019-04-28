@@ -1,0 +1,29 @@
+{%extends 'layout.html'%}
+{% block body %}
+<div class='container'>
+	<h3 align="center">{{book.name}}<br>
+    </h3><br><br>
+    <div align="center"><img src={{book.cover}} height="344" width="220"></div><br><br>
+    <p style='font-style: italic;' align="center">	    	
+    	{{book.description}}
+    </p>
+    <br><br>
+    <div align="center">
+    	<a href='/download/{{book.name}}'><button type="button" class="btn btn-default btn-lg" style="margin-right: 50px; ">
+  		<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download
+		</button></a>
+
+		{% if LoggedIn and book.name not in books %}
+		<a href='/addtolib/{{book.name}}'><button type="button" class="btn btn-default btn-lg">
+  		<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Add To Library
+		</button></a>
+		{% endif %}
+
+		{% if LoggedIn and book.name in books %}
+		<button type="button" class="btn btn-default btn-lg">
+  		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> In Library
+		</button>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{%extends 'layout.html'%}
+{% block body %}
+<div class='container'>
+	<h3 align="center"> Library </h3><br><br>
+	{% if not LoggedIn %}
+		<div class="jumbotron jumbotron-fluid">
+  			<div class="container">
+    			<h1 class="display-4" align="center">Error.</h1>
+    			<p class="lead" align="center">Please Login to view this section</p>
+  			</div>
+		</div>		
+	{% endif %}
+	
+		{% set i = 0 %}
+	    {% for i in range(0,books|length,4) %}
+		{% set Books = books[i:i+4] %}
+		<div class='row' style="margin-left: 25px; margin-right: 25px;">
+		{% for book in Books %}
+			<div class='col-md-3' style="margin-bottom: 25px;">
+				<div align="center"><a href='/book/{{book.name}}'><img src={{book.cover}} class="img-thumbnail"></a><br>
+				<b>{{book.name}}</b></div>
+			</div>
+		{% endfor %}
+		</div>
+	{% endfor %}
+
+	{% if LoggedIn and books|length == 0 %}
+	<div class="jumbotron jumbotron-fluid">
+  		<div class="container">
+    		<h1 class="display-4" align="center">Library Empty!</h1>
+    		<p class="lead" align="center">Add books from the E-books section to view and download them</p>
+  		</div>
+	</div>
+	{% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Liber - LIBERate yourself</title>
+	
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="utf-8"/>
+    <meta content="initial-scale=1, width=device-width" name="viewport"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <style type="text/css">
+      .img-thumbnail:hover{transform: scale(1.2);}
+    </style>
+
+    {% with message = get_flashed_messages() %}
+  	{% if message %}
+    	<div class="alert alert-danger">
+    	<p align ='center'>{{ message[0] }}</p>
+    	</div>
+  	{% endif %}
+	{% endwith %}
+</head>
+<body>
+<div class = 'container'>
+	<div class= 'page-header'>
+		<h2>
+		<a href='/'><img  src="/static/logo.jpg" style="height: 50px;width: 69px; " ></a>Liber<br>
+		<small>Liberate your mind</small><br>
+		</h2>
+
+		<nav class="navbar navbar-inverse">
+			<ul class="nav navbar-nav">
+      			<li><a href="/MyLibrary">My Library</a></li>
+      			<li><a href="/Ebooks">E-books</a></li>
+      			<li><a href="/Featured">Featured</a></li>
+    		</ul>
+    		<ul class="nav navbar-nav navbar-right" style="padding-right: 15px;">
+    			{% if LoggedIn == False %}
+      			<li><a href="/Register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      			<li><a href="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      			{% endif %}
+      			{% if LoggedIn %}
+      			<li><a href="/Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      			{% endif %}
+    		</ul>
+		</nav>
+	</div>
+	{% block body %}{% endblock %}
+</body>
+</html>
